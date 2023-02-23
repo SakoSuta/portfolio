@@ -1,16 +1,27 @@
-import { models, model, Schema } from 'mongoose'
+const mongoose = require('mongoose')
+const Schema = mongoose.Schema
 
-const WorkSchema: Schema = new Schema({
+const WorkSchema = new Schema({
     title:{
         type: String,
         required: true,
         unique: true,
     },
     seo:{
-        title: { type: String, required: true },
-        description: { type: String, required: true },
+        title: { 
+            type: String, 
+            required: true 
+        },
+        description: { 
+            type: String, 
+            required: true 
+        },
     },
-    slug:{ type: String, required: true, unique: true },
+    slug:{ 
+        type: String, 
+        required: true, 
+        unique: true,
+    },
     description: {
         type: String,
         required: true,
@@ -21,6 +32,5 @@ const WorkSchema: Schema = new Schema({
     },
 })
 
-const WorkModel = models.Work || model('Work', WorkSchema)
-
-export default WorkModel
+const Work = mongoose.model('Work', WorkSchema)
+module.exports = Work
