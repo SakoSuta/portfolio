@@ -1,7 +1,7 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
-import { dbConnect } from '../../../@utils/mongodb/db-connect'
-import WorkModel from '../../../model/WorkModel'
-import { IWork } from '../../../@types/mongodb-types'
+import { dbConnect } from '@/@utils/mongodb/db-connect'
+import Work from '@/model/Work'
+import { IWork } from '@/@types/mongodb-types'
 
 type Data = {
     works?: IWork[]
@@ -13,7 +13,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
     const { title, seo, slug, description, coverImage } = req.body
 
     const{
-        query: { id },
+        query: { _id },
         method,
     } = req
 
@@ -24,7 +24,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
             dbConnect()
 
             // Recherche dans la base de donnée avec l'ID
-            const works = await WorkModel.findOne({'id': id})
+            const works = await Work.findOne({_id: _id})
 
             if(!works){
                 throw new Error("Error Work")
@@ -60,7 +60,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
             dbConnect()
 
             // Recherche dans la base de donnée avec l'ID
-            const foundWork = await WorkModel.findOne({'id': id})
+            const foundWork = await Work.findOne({_id: _id})
 
             if(!foundWork){
                 throw new Error('foundWork')
@@ -75,7 +75,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
             }
 
             // Mettre à jour dans la base de donnée avec l'ID
-            const updateWork = await WorkModel.updateOne({'id': id}, { $set : { title: title, seo: {title: seo.title, description: seo.description}, slug: slug, description: description, coverImage: coverImage}})
+            const updateWork = await Work.updateOne({_id: _id}, { $set : { title: title, seo: {title: seo.title, description: seo.description}, slug: slug, description: description, coverImage: coverImage}})
 
             if(!updateWork){
                 throw new Error('Update Work')
@@ -122,14 +122,14 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
             dbConnect()
 
             // Recherche dans la base de donnée avec l'ID
-            const foundWork = await WorkModel.findOne({'id': id})
+            const foundWork = await Work.findOne({_id: _id})
 
             if(!foundWork){
                 throw new Error('foundWork')
             }
 
             // Supprimer dans la base de donnée avec l'ID
-            const worksDelete = await WorkModel.deleteOne({'id': id})
+            const worksDelete = await Work.deleteOne({_id: _id})
 
             if(!worksDelete){
                 throw new Error('worksDelete')

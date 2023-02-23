@@ -1,7 +1,7 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
-import { dbConnect } from '../../../@utils/mongodb/db-connect'
-import WorkModel from '../../../model/WorkModel'
-import { IWork } from '../../../@types/mongodb-types'
+import { dbConnect } from '@/@utils/mongodb/db-connect'
+import Work from '@/model/Work'
+import { IWork } from '@/@types/mongodb-types'
 
 type Data = {
     works?: IWork[]
@@ -27,7 +27,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
                 throw new Error("Error Champs")
             }
 
-            const workCreate = await WorkModel.create(req.body)
+            const workCreate = await Work.create(req.body)
 
             if(!workCreate){
                 throw new Error("Error Create")
@@ -61,7 +61,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
             // Connexion à la base de donnée
             dbConnect()
 
-            const works = await WorkModel.find({})
+            const works = await Work.find({})
 
             if(!works){
                 throw new Error("Error No Works")
