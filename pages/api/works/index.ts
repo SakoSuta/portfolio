@@ -32,13 +32,14 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
             if(!workCreate){
                 throw new Error("Error Create")
             }
-            
+
             return res.status(201).json({ message: `Le projet ${workCreate.title} a bien été créé`})
         } catch(error){
             console.log(error)
             var message = `Une erreur c'est produite, veuillez réessayer!`
             var code = 500
 
+             // Message d'erreur
             if(error.message == "Error Champs"){
                 message = `Vous devez remplir tous les champs !`
                 code = 409
@@ -56,6 +57,8 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
     }
     if (req.method === 'GET') {
         try {
+
+            // Connexion à la base de donnée
             dbConnect()
 
             const works = await WorkModel.find({})
@@ -66,11 +69,11 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
 
             return res.status(200).json({ works, message: 'OK' })
         } catch (error) {
-
             console.log(error)
             var message = `Une erreur c'est produite, veuillez réessayer!`
             var code = 500
 
+             // Message d'erreur
             if(error.message == "Error No Works"){
                 message = `Aucun projet n'a été trouvé !`
                 code = 409

@@ -18,12 +18,12 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
     } = req
 
     if (req.method === 'GET') {
-        
-
         try {
 
+            // Connexion à la base de donnée
             dbConnect()
 
+            // Recherche dans la base de donnée avec l'ID
             const works = await WorkModel.findOne({'id': id})
 
             if(!works){
@@ -38,6 +38,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
             var message = `Une erreur c'est produite, veuillez réessayer!`
             var code = 500
 
+            // Message d'erreur
             if(error.message == "Error Work"){
                 message = `Ce projet n'existe pas !`
                 code = 409
@@ -58,6 +59,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
             // Connexion à la base de donnée
             dbConnect()
 
+            // Recherche dans la base de donnée avec l'ID
             const foundWork = await WorkModel.findOne({'id': id})
 
             if(!foundWork){
@@ -72,7 +74,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
                 throw new Error("Error Champs")
             }
 
-
+            // Mettre à jour dans la base de donnée avec l'ID
             const updateWork = await WorkModel.updateOne({'id': id}, { $set : { title: title, seo: {title: seo.title, description: seo.description}, slug: slug, description: description, coverImage: coverImage}})
 
             if(!updateWork){
@@ -87,6 +89,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
             var message = `Une erreur c'est produite, veuillez réessayer!`
             var code = 500
 
+             // Message d'erreur
             if(error.message == "foundWork"){
                 message = `Ce projet n'existe pas !`
                 code = 409
@@ -115,14 +118,17 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
 
         try {
 
+            // Connexion à la base de donnée
             dbConnect()
 
+            // Recherche dans la base de donnée avec l'ID
             const foundWork = await WorkModel.findOne({'id': id})
 
             if(!foundWork){
                 throw new Error('foundWork')
             }
 
+            // Supprimer dans la base de donnée avec l'ID
             const worksDelete = await WorkModel.deleteOne({'id': id})
 
             if(!worksDelete){
@@ -135,6 +141,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
             var message = `Une erreur c'est produite, veuillez réessayer!`
             var code = 500
 
+             // Message d'erreur
             if(error.message == "foundWork"){
                 message = `Ce projet n'existe pas !`
                 code = 409
