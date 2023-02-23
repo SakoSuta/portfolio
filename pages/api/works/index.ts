@@ -33,7 +33,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
                 throw new Error("Error Create")
             }
 
-            return res.status(201).json({ message: `Le projet ${workCreate.title} a bien été créé`})
+            return res.status(201).json({ message: `La Création de ${workCreate.title} à bien était effectuer`})
         } catch(error){
             console.log(error)
             var message = `Une erreur c'est produite`
@@ -67,7 +67,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
                 throw new Error("Error No Works")
             }
 
-            return res.status(200).json({ works, message: 'OK' })
+            return res.status(200).json({ works, message: 'Voici tous les projets disponibles' })
         } catch (error) {
             console.log(error)
             var message = `Une erreur c'est produite`
