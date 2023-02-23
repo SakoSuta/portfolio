@@ -36,7 +36,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
             return res.status(201).json({ message: `Le projet ${workCreate.title} a bien été créé`})
         } catch(error){
             console.log(error)
-            var message = `Une erreur c'est produite, veuillez réessayer!`
+            var message = `Une erreur c'est produite`
             var code = 500
 
              // Message d'erreur
@@ -46,7 +46,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
             }
 
             if(error.message == "Error Create"){
-                message = `Le projet n'as pas pu être créer, veuillez réessayer !`
+                message = `L'Ajout du projet n'a pas pu etre éxecuter`
                 code = 409
             }
 
@@ -70,7 +70,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
             return res.status(200).json({ works, message: 'OK' })
         } catch (error) {
             console.log(error)
-            var message = `Une erreur c'est produite, veuillez réessayer!`
+            var message = `Une erreur c'est produite`
             var code = 500
 
              // Message d'erreur

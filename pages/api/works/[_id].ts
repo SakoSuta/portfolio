@@ -35,12 +35,12 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
         } catch (error) {
 
             console.log(error)
-            var message = `Une erreur c'est produite, veuillez réessayer!`
+            var message = `Une erreur c'est produite`
             var code = 500
 
             // Message d'erreur
             if(error.message == "Error Work"){
-                message = `Ce projet n'existe pas !`
+                message = `Aucun projet n'a était trouver`
                 code = 409
             }
             
@@ -86,12 +86,12 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
 
         } catch(error){
             console.log(error)
-            var message = `Une erreur c'est produite, veuillez réessayer!`
+            var message = `Une erreur c'est produite`
             var code = 500
 
              // Message d'erreur
             if(error.message == "foundWork"){
-                message = `Ce projet n'existe pas !`
+                message = `Aucun projet n'a était trouver`
                 code = 409
             }
 
@@ -101,7 +101,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
             }
 
             if(error.message == "Update Work"){
-                message = `Le projet n'as pas pu être modifier, veuillez réessayer !`
+                message = `La Modification n'a pas pu etre éxecuter`
                 code = 409
             }
 
@@ -138,17 +138,17 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
             return res.status(200).json({ message: `Le projet ${foundWork.title} a bien été supprimé` })
         } catch (error) {
             console.log(error)
-            var message = `Une erreur c'est produite, veuillez réessayer!`
+            var message = `Une erreur c'est produite`
             var code = 500
 
              // Message d'erreur
             if(error.message == "foundWork"){
-                message = `Ce projet n'existe pas !`
+                message = `Aucun projet n'a était trouver`
                 code = 409
             }
 
             if(error.message == "worksDelete"){
-                message = `Le projet n'as pas pu être supprimer, veuillez réessayer !`
+                message = `La Suppression n'a pas pu etre éxecuter`
                 code = 409
             }
 
