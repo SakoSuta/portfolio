@@ -13,7 +13,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
     if (req.method === 'POST') {
 
         const { title, seo, slug, description, coverImage } = req.body
-        
+
         try{
 
             // Connexion à la base de donnée
@@ -32,10 +32,8 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
             if(!workCreate){
                 throw new Error("Error Create")
             }
-
+            
             return res.status(201).json({ message: `Le projet ${workCreate.title} a bien été créé`})
-
-
         } catch(error){
             console.log(error)
             var message = `Une erreur c'est produite, veuillez réessayer!`
@@ -62,10 +60,26 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
 
             const works = await WorkModel.find({})
 
+            if(!works){
+                throw new Error("Error No Works")
+            }
+
             return res.status(200).json({ works, message: 'OK' })
         } catch (error) {
-            console.error(error)
-            return res.status(500).json({ message: 'Internal server error' })
+
+            console.log(error)
+            var message = `Une erreur c'est produite, veuillez réessayer!`
+            var code = 500
+
+            if(error.message == "Error No Works"){
+                message = `Aucun projet n'a été trouvé !`
+                code = 409
+            }
+            
+            return res.status(code).json({
+                message,
+            })
+
         }
     }
 }
