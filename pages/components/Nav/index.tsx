@@ -11,9 +11,11 @@ function Navigation() {
                     <li><a href="/experience">Experiences</a></li>
                     <li><a href="/skills">Skills</a></li>
                 </ul>
-                <a href="/"><img src="/moon.svg" /></a>
-                <a href="/CV.pdf">Resume</a>
-                <a href="/contact">Contact Me</a>
+                <div className="flex justify-between">
+                    <a href="/"><img src="/moon.svg" /></a>
+                    <a href="/CV.pdf">Resume</a>
+                    <a href="/contact">Contact Me</a>
+                </div>
             </nav>
         </>
     )

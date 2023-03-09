@@ -14,15 +14,12 @@ type Props = {
 export default function Works({ work }: Props){
     const [ message, setMessage ] = useState("");
     const [ works, setWorks ] = useState<IWork[] | null>(null);
-    const [ isLoading, setIsLoading ] = useState(false);
     
     useEffect(() => {
         fetch(`/api/works`)
         .then(response => response.json())
         .then((json) => {
-            
             setWorks(json.works)
-            setIsLoading(false)
         })
     }, [])
 
@@ -30,28 +27,22 @@ export default function Works({ work }: Props){
             fetch(`/api/works/${id}`)
             .then(response => response.json())
             .then((json) => {
-                
                 setWorks(json.works)
-                setMessage(`Le travail avec l'ID ${id} a été supprimé.`)  
-                setIsLoading(false)
+                setMessage(`Le travail avec l'ID ${id} a été supprimé.`)
             })
 
         
     }
-
-    // if(!isLoading){
-    //     return <> <h2>Chargement</h2></>
-    // }
-
     
     if(works){
         return (
             <>
                 <header>
-                    <h1>Mes travaux</h1>
+                    <h1>Admin - All my Projects</h1>
+                    <br />
                 </header>
 
-                <Link href="/admin/works/create">Créer</Link>
+                <Link href="/admin/works/create">Create</Link>
 
                 {message && <p>{message}</p>}
 
@@ -61,20 +52,22 @@ export default function Works({ work }: Props){
                             <div className="card" key={work._id}>
                                 <Link href={`/admin/works/${work._id}`}>
                                     <div className="w-full p-5 text-white bg-black/50">
-                                        <h2 className="font-semibold text-lg mb-2.5">{work.title}</h2>
-                                        <p className="text-sm">{work.description}</p>
+                                        <h2 className="font-semibold text-lg mb-2.5">Title : {work.title}</h2>
+                                        <p className="text-sm">Title of the SEO : {work.seo.title}</p>
+                                        <p className="text-sm">Description of the SEO : {work.seo.description}</p>
+                                        <p className="text-sm">Description : {work.description}</p>
+                                        <p className="text-sm">Image : {work.coverImage}</p>
                                     </div>
                                 </Link>
                                 <div>
-                                <Link href={`/admin/works/update/${work._id}`}>Modifier</Link>
-                                    <button onClick={() => deleteWork(work._id)}>Supprimer</button>
+                                <Link href={`/admin/works/update/${work._id}`}>Modif</Link>
+                                <span> || </span>
+                                    <button onClick={() => deleteWork(work._id)}>Delete</button>
                                 </div>
                             </div>
                          ))}
                     </div>
                 </section>
-    
-                <Link href="/admin/works/create">Créer</Link>
             </>
         )
     }
