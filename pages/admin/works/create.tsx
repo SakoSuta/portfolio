@@ -11,40 +11,50 @@ type Props = {
     work: IWork[];
 }
 
-export default function Works({ work }: Props){
+export default function WorksCreate({ work }: Props){
     const [ message, setMessage ] = useState("");
-    const [ works, setWorks ] = useState<IWork[] | null>(null);
-    const [ isLoading, setIsLoading ] = useState(false);
+    const [workCreate, setWorksCreate] = useState({ 
+        title: "",
+        seo: { title: "", description: "" },
+        slug: "",
+        coverImage: "",
+        description: "",
+    });
     
-    useEffect(() => {
-        fetch(`/api/works`)
-        .then(response => response.json())
-        .then((json) => {
-            
-            setWorks(json.works)
-            setIsLoading(false)
+    const postWork = () => {
+        fetch(`/api/works`, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(workCreate),
         })
-    }, [])
-
-    const deleteWork = async(id: string) => {
-            fetch(`/api/works/${id}`)
-            .then(response => response.json())
+            .then((response) => response.json())
             .then((json) => {
-                
-                setWorks(json.works)
-                setMessage(`Le travail avec l'ID ${id} a été supprimé.`)  
-                setIsLoading(false)
-            })
+                setMessage(json.message);
+            });
+    };
 
-        
-    }
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+        const { id, value } = e.target;
+        setWorksCreate((prev) => ({
+          ...prev,
+          title: id === 'title' ? value : prev.title,
+          description: id === 'description' ? value : prev.description,
+          slug: id === 'slug' ? value : prev.slug,
+          coverImage: id === 'coverImage' ? value : prev.coverImage,
+          seo: {
+            ...prev.seo,
+            title: id === 'seo.title' ? value : prev.seo.title,
+            description: id === 'seo.description' ? value : prev.seo.description,
+          },
+        }));
+      };
 
-    // if(!isLoading){
-    //     return <> <h2>Chargement</h2></>
-    // }
-
+    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
+        postWork();
+    };
     
-    if(works){
+    if(workCreate){
         return (
             <>
                 <header>
@@ -58,24 +68,26 @@ export default function Works({ work }: Props){
 
                 <section className="w-full px-[5vw] pb-[5vw]">
                     <div className="w-full box-border grid grid-cols-3 gap-[20px]">
-                        <form action="POST">
+                        <form action="/admin" onSubmit={handleSubmit}>
                             <label htmlFor="">Title :</label><br />
-                            <input type="text" name='title'/><br />
+                            <input type="text" id='title' onChange={handleChange}/><br />
 
                             <label htmlFor="">SEO :</label><br />
-                            <input type="text" name='seo'/><br />
 
                                 <label htmlFor="">Title of the SEO :</label><br />
-                                <input type="text" name='title'/><br />
+                                <input type="text" id='seo.title' onChange={handleChange}/><br />
 
                                 <label htmlFor="">Description of the SEO :</label><br />
-                                <input type="text" name='description'/><br />
+                                <input type="text" id='seo.description' onChange={handleChange}/><br />
                             
                             <label htmlFor="">Description :</label><br />
-                            <input type="text" name='description'/><br />
+                            <input type="text" id='description' onChange={handleChange}/><br />
+
+                            <label htmlFor="">Slug :</label><br />
+                            <input type="text" id='slug' onChange={handleChange}/><br />
                             
                             <label htmlFor="">Image :</label><br />
-                            <input type="text" name='coverImage'/><br />
+                            <input type="text" id='coverImage' onChange={handleChange}/><br />
 
                             <button type='submit'>New Project</button>
                         </form>

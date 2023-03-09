@@ -24,7 +24,7 @@ export default function Works({ work }: Props){
     }, [])
 
     const deleteWork = async(id: string) => {
-            fetch(`/api/works/${id}`)
+            fetch(`/api/works/${id}`, {method:"DELETE"})
             .then(response => response.json())
             .then((json) => {
                 setWorks(json.works)

@@ -134,8 +134,9 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
             if(!worksDelete){
                 throw new Error('worksDelete')
             }
+            const works = await Work.find({})
 
-            return res.status(200).json({ message: `La Suppression de ${foundWork.title} à bien été effectuer` })
+            return res.status(200).json({ works:works, message: `La Suppression de ${foundWork.title} à bien été effectuer` })
         } catch (error) {
             console.log(error)
             var message = `Une erreur c'est produite`
