@@ -4,6 +4,7 @@ import { NextPage } from "next"
 // import useSWR, {Fetcher} from 'swr'
 import Link from "next/link"
 import { useEffect, useState } from 'react'
+import { CldUploadWidget } from 'next-cloudinary';
 
 
 
@@ -87,6 +88,19 @@ export default function WorksCreate({ work }: Props){
                             <input type="text" id='slug' onChange={handleChange}/><br />
                             
                             <label htmlFor="">Image :</label><br />
+                            <CldUploadWidget uploadPreset="next-cloudinary-unsigned">
+                                {({ open }) => {
+                                    function handleOnClick(e) {
+                                    e.preventDefault();
+                                    open();
+                                    }
+                                    return (
+                                    <button onClick={handleOnClick}>
+                                        Upload an Image
+                                    </button>
+                                    );
+                                }}
+                            </CldUploadWidget>
                             <input type="text" id='coverImage' onChange={handleChange}/><br />
 
                             <button type='submit'>New Project</button>

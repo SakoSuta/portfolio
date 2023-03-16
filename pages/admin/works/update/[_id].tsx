@@ -5,6 +5,7 @@ import { NextPage } from "next"
 import Link from "next/link"
 import { useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
+import { CldImage } from 'next-cloudinary';
 
 
 
@@ -114,6 +115,12 @@ export default function WorksUptade({ work }: Props){
                                     <input type="text" id='description' value={workEdit.description} onChange={handleChange}/><br /><br />
                                     
                                     <label htmlFor="">Image :</label><br />
+                                    <CldImage
+                                    width="600"
+                                    height="600"
+                                    src={workEdit.coverImage}
+                                    alt="Description of my image"
+                                    />
                                     <input type="text" id='coverImage' value={workEdit.coverImage} onChange={handleChange}/><br /><br />
 
                                     <button type='submit'>Modif Project</button>
