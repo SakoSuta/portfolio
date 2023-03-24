@@ -1,11 +1,13 @@
+import Link from "next/link";
+
 export default function Reseaux() {
     return (
         <>
-            <ul>
-                <li><a href="/"><img src="/Logo_Reseaux/Instagram.svg" /></a></li>
-                <li><a href="/"><img src="/Logo_Reseaux/Github.svg" /></a></li>
-                <li><a href="/"><img src="/Logo_Reseaux/Twitter.svg" /></a></li>
-                <li><a href="/"><img src="/Logo_Reseaux/Linkedin.svg" /></a></li>
+            <ul className="flex justify-between md:w-48">
+                <li><Link href="/"><img src="/Logo_Reseaux/Instagram.svg" /></Link></li>
+                <li><Link href="/"><img src="/Logo_Reseaux/Github.svg" /></Link></li>
+                <li><Link href="/"><img src="/Logo_Reseaux/Twitter.svg" /></Link></li>
+                <li><Link href="/"><img src="/Logo_Reseaux/Linkedin.svg" /></Link></li>
             </ul>
         </>
     )

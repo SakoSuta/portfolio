@@ -46,6 +46,8 @@ import ContactForm from "./components/contact-component";
 import Reseaux from './components/Reseaux';
 
 import { Inter } from '@next/font/google'
+import Link from "next/link"
+import NextAuth from './api/works/auth/[...nextauth]';
 
 const interRegular = Inter({ 
     weight: ['400'],
@@ -72,9 +74,11 @@ export default function Home() {
                         <Reseaux/>
                     </div>
                 </section>
+                {/* <NextAuth></NextAuth> */}
                 <ContactForm />
             </main>
             <Footer/>
+            <Link rel="stylesheet" href="http://localhost:3000/admin/works" />
         </>
     )
 }

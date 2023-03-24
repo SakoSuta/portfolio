@@ -5,11 +5,11 @@ function Navigation() {
         <>
             <nav className="flex justify-between px-1 py-4">
                 <a href="/"><img src="/Logo.svg" /></a>
-                <ul className="flex">
-                    <li><a href="/services">Services</a></li>
-                    <li><a href="/portfolios">Portfolios</a></li>
-                    <li><a href="/experience">Experiences</a></li>
-                    <li><a href="/skills">Skills</a></li>
+                <ul className="flex space-x-8">
+                    <li className="flex items-center"><a href="/services">Services</a></li>
+                    <li className="flex items-center"><a href="/portfolios">Portfolios</a></li>
+                    <li className="flex items-center"><a href="/experience">Experiences</a></li>
+                    <li className="flex items-center"><a href="/skills">Skills</a></li>
                 </ul>
                 <div className="flex justify-between">
                     <a href="/"><img src="/moon.svg" /></a>
@@ -25,10 +25,10 @@ function Footer() {
     return (
         <>
             <header>
-                <nav>
+                <footer className="flex flex-col items-center py-20">
                     <Reseaux/>
-                    <p>© 2022  -  DevChapter</p>
-                </nav>
+                    <p className="mt-6">© 2022  -  DevChapter</p>
+                </footer>
             </header>
         </>
     )
