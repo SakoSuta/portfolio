@@ -47,7 +47,7 @@ import Reseaux from './components/Reseaux';
 
 import { Inter } from '@next/font/google'
 import Link from "next/link"
-import NextAuth from './api/works/auth/[...nextauth]';
+import NextAuth from './api/auth/[...nextauth]';
 
 const interRegular = Inter({ 
     weight: ['400'],
