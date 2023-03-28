@@ -64,16 +64,15 @@ export default function Home() {
                 <link rel="icon" href="/favicon.ico" />
             </Head>
             <Navigation/>
-            <main>
-                <h1 className={interRegular.className}>Hello World !</h1>
-                <section>
-                    <div>
-                        <span>MY NAME IS</span>
-                        <h1 className="text-3xl font-bold underline">Emilie <span>Montpre</span></h1>
-                        <p>Creative front-end developer with more than +5 years of experience in enterprise companies and startups. Proficient in JavaScript, Angular, and React. Passionate about UI/UX</p>
-                        <Reseaux/>
-                    </div>
-                </section>
+            <main className='h-full'>
+            <section className="px-4 py-8 lg:px-8 lg:py-12 bg-gray-100">
+  <div className="mx-auto max-w-7xl">
+    <h2 className="text-3xl font-bold text-gray-900">Titre de la section</h2>
+    <p className="mt-4 text-gray-500">Texte de la section</p>
+  </div>
+</section>
+
+
                 {/* <NextAuth></NextAuth> */}
                 <ContactForm />
             </main>

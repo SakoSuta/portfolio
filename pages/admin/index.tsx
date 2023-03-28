@@ -5,6 +5,9 @@ import { NextPage } from "next"
 import Link from "next/link"
 import { useEffect, useState } from 'react'
 
+import { getSession } from 'next-auth';
+import { useRouter } from 'next/router';
+
 
 
 type Props = {
@@ -72,3 +75,13 @@ export default function Works({ work }: Props){
         )
     }
 }
+
+export async function getServerSideProps() {
+    const session = await getSession();
+  
+    return {
+      props: {
+        user: session?.user || null,
+      },
+    };
+  }
