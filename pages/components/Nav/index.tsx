@@ -14,8 +14,8 @@ function Navigation() {
                 </ul>
                 <div className="flex justify-between items-center">
                     <a href="/"><img src="/moon.svg" /></a>
-                    <a href="/CV.pdf" className="px-2.5 mx-12">Resume</a>
-                    <a href="/contact" className="px-6 py-4 border rounded-lg">Contact Me</a>
+                    <a href="/CV.pdf" className="px-2.5 mx-12 text-sm">Resume</a>
+                    <a href="/contact" className="px-6 py-4 border border-MyColor rounded-lg text-sm">Contact Me</a>
                 </div>
             </nav>
         </>

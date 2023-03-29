@@ -65,16 +65,55 @@ export default function Home() {
             </Head>
             <Navigation/>
             <main className='h-full'>
-            <section className="px-4 py-8 lg:px-8 lg:py-12 bg-gray-100">
-  <div className="mx-auto max-w-7xl">
-    <h2 className="text-3xl font-bold text-gray-900">Titre de la section</h2>
-    <p className="mt-4 text-gray-500">Texte de la section</p>
-  </div>
-</section>
-
-
+                <section className='flex items-center justify-between h-full'>
+                    <div className='w-3/6'>
+                        <span className='text-xl text-Categories'>-&nbsp; M Y &nbsp; N A M E &nbsp; I S</span>
+                        <h1 className="text-5xl font-bold pt-4">Emilie <span className='text-MyColor'>Montpre.</span></h1>
+                        <p className='py-9'>Hello, my name is Emilie, I am 19 years old and I am student in web and mobile development. I am motivated dedicated to learn and ready to put my knowledge and my skills at the service of your business</p>
+                        <Reseaux/>
+                    </div>
+                    <div className='w-2/6'><img src="/img/Back_Image.png" /></div>
+                </section>
+                <section className='flex items-center justify-between h-full'>
+                    <div className='w-full'>
+                        <span className='text-xl text-Categories'>-&nbsp; M Y &nbsp; W O R K S</span>
+                        <h2 className="text-4xl font-bold pt-4">Featured Portfolios</h2>
+                        <div className='grid grid-cols-1 xs:grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 grid-flow-row w-full p-8'>
+                            <a href="">
+                                <div className='w-fit py-6'>
+                                    <img src="https://res.cloudinary.com/dgyqg4wwj/image/upload/v1678370650/cld-sample-4.jpg" alt="" className='h-52 rounded-t-lg'/>
+                                    <div className='flex justify-center items-center h-24 bg-MyColor rounded-b-lg'><h3 className='h-fit text-lg font-semibold'>Project name</h3></div>
+                                </div>
+                            </a>
+                            <a href="">
+                                <div className='w-fit py-6'>
+                                    <img src="https://res.cloudinary.com/dgyqg4wwj/image/upload/v1678370650/cld-sample-4.jpg" alt="" className='h-52 rounded-t-lg'/>
+                                    <div className='flex justify-center items-center h-24 bg-MyColor rounded-b-lg'><h3 className='h-fit text-lg font-semibold'>Project name</h3></div>
+                                </div>
+                            </a>
+                            <a href="">
+                                <div className='w-fit py-6'>
+                                    <img src="https://res.cloudinary.com/dgyqg4wwj/image/upload/v1678370650/cld-sample-4.jpg" alt="" className='h-52 rounded-t-lg'/>
+                                    <div className='flex justify-center items-center h-24 bg-MyColor rounded-b-lg'><h3 className='h-fit text-lg font-semibold'>Project name</h3></div>
+                                </div>
+                            </a>
+                            <a href="">
+                                <div className='w-fit py-6'>
+                                    <img src="https://res.cloudinary.com/dgyqg4wwj/image/upload/v1678370650/cld-sample-4.jpg" alt="" className='h-52 rounded-t-lg'/>
+                                    <div className='flex justify-center items-center h-24 bg-MyColor rounded-b-lg'><h3 className='h-fit text-lg font-semibold'>Project name</h3></div>
+                                </div>
+                            </a>
+                            <a href="">
+                                <div className='w-fit py-6'>
+                                    <img src="https://res.cloudinary.com/dgyqg4wwj/image/upload/v1678370650/cld-sample-4.jpg" alt="" className='h-52 rounded-t-lg'/>
+                                    <div className='flex justify-center items-center h-24 bg-MyColor rounded-b-lg'><h3 className='h-fit text-lg font-semibold'>Project name</h3></div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </section>
                 {/* <NextAuth></NextAuth> */}
-                <ContactForm />
+                {/* <ContactForm /> */}
             </main>
             <Footer/>
             <Link rel="stylesheet" href="http://localhost:3000/admin/works" />
