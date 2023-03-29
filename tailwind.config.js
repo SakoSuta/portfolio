@@ -9,6 +9,10 @@ module.exports = {
       colors: {
         'MyColor': '#E69F34',
         'Categories': '#656D72',
+        'DarkMode': '#1D2939',
+        'BackD':'#353E4B',
+        'Light':'#E2E2E2',
+        'Red':'#CC2828',
       },
   },
   plugins: [],

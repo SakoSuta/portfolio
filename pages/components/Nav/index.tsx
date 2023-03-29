@@ -6,10 +6,10 @@ function Navigation() {
             <nav className="flex justify-between items-center px-1 py-4">
                 <a href="/"><img src="/Logo.svg" /></a>
                 <ul className="flex justify-between w-1/3">
-                    <li className="flex items-center"><a href="/services">Services</a></li>
-                    <li className="flex items-center"><a href="/portfolios">Portfolios</a></li>
-                    <li className="flex items-center"><a href="/experience">Experiences</a></li>
-                    <li className="flex items-center"><a href="/skills">Skills</a></li>
+                    <li className="flex items-center"><a href="">Services</a></li>
+                    <li className="flex items-center"><a href="#portfolio">Portfolios</a></li>
+                    <li className="flex items-center"><a href="">Experiences</a></li>
+                    <li className="flex items-center"><a href="">Skills</a></li>
                     <li className="flex items-center"><a href="/api/auth/signin/credentials">Admin</a></li>
                 </ul>
                 <div className="flex justify-between items-center">
