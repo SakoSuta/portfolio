@@ -24,14 +24,12 @@ export default function Project({ work }: Props){
             <>
                 {message && <div className='flex justify-center w-full p-9'><p className='text-lg font-semibold'>{message}</p></div>}
                 {works.map((work) => (
-                    <div key={work._id} className='w-96 p-6 m-9 bg-BackD rounded-md'>
-                        <Link href={`/admin/works/${work._id}`}>
-                            <a href="">
-                                <div className='w-fit py-6'>
-                                <CldImage width={200} height={200} alt={work.title} src={work.coverImage} />
-                                    <div className='flex justify-center items-center h-24 bg-MyColor rounded-b-lg'><h3 className='h-fit text-lg font-semibold'>Project name</h3></div>
-                                </div>
-                            </a>
+                    <div key={work._id} className='w-96 p-6 m-9 rounded-md'>
+                        <Link href="">
+                            <div className='w-fit py-6'>
+                                <CldImage width={250} height={200} alt={work.title} src={work.coverImage} className='rounded-t-lg'/>
+                                <div className='flex justify-center items-center h-24 bg-MyColor rounded-b-lg'><h3 className='h-fit text-lg font-semibold'>{work.title}</h3></div>
+                            </div>
                         </Link>
                     </div>
                 ))}
