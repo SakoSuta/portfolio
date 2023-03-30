@@ -2,13 +2,12 @@ import { IWork } from '@/@types/mongodb-types'
 import Link from "next/link"
 import { useEffect, useState } from 'react'
 import { CldImage } from 'next-cloudinary';
-import { type } from 'os';
 
 type Props = {
     work: IWork[];
 }
 
-function Project(): React.FC<Props> = ({ work }) => {
+function Project({ work }: Props){
     const [ message, setMessage ] = useState("");
     const [ works, setWorks ] = useState<IWork[] | null>(null);
     
@@ -40,4 +39,3 @@ function Project(): React.FC<Props> = ({ work }) => {
 }
 
 export { Project }
-export type { Props }

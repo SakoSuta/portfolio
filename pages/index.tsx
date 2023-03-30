@@ -45,11 +45,6 @@ import { Navigation, Footer } from "./components/Nav";
 import ContactForm from "./components/contact-component";
 import Reseaux from './components/Reseaux';
 import { Project } from "./components/project";
-import { IWork } from '@/@types/mongodb-types'
-
-type Props = {
-    work: IWork[];
-}
 
 import { Inter } from '@next/font/google'
 import Link from "next/link"
@@ -91,7 +86,7 @@ export default function Home() {
                             <span className='text-xl text-Categories'>-&nbsp; M Y &nbsp; W O R K S</span>
                             <h2 className="text-4xl font-bold pt-4">Featured Portfolios</h2>
                             <div className='grid grid-cols-1 xs:grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 grid-flow-row w-full p-8'>
-                                <Project key={work.id} work={work}/>
+                                <Project/>
                             </div>
                         </div>
                     </section>
