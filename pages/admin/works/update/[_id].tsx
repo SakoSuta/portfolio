@@ -6,6 +6,7 @@ import Link from "next/link"
 import { useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
 import { CldImage } from 'next-cloudinary';
+import { CldUploadWidget } from 'next-cloudinary';
 
 
 
@@ -113,13 +114,25 @@ export default function WorksUptade({ work }: Props){
                                 <input className="rounded-lg border-2 border-DarkMode bg-Categories w-full h-9" type="text" id='description' value={workEdit.description} onChange={handleChange}/><br /><br />
             
                                 <label htmlFor="" className='font-semibold'>Image :</label><br />
-                                <CldImage
-                                width="600"
-                                height="600"
-                                src={workEdit.coverImage}
-                                alt="Description of my image"
-                                />
-                                <input className="rounded-lg border-2 border-DarkMode bg-Categories w-full h-9" type="text" id='coverImage' value={workEdit.coverImage} onChange={handleChange}/><br /><br />
+                                <CldUploadWidget  uploadPreset={process.env.NEXT_PUBLIC_CLOUDINARY_UPLOAD_PRESET}
+                                     onUpload={(res: { info: { secure_url: any; }; }) => {
+                                         console.log('res : ',res.info)
+                                         setWorksUptade((prev) =>
+                                             ({ ...prev, coverImage: res.info.public_id })) }
+                                }>
+                                    {({ open }) => {
+                                        function handleOnClick(e: { preventDefault: () => void; }) {
+                                            e.preventDefault();
+                                            open();
+                                        }
+                                        return (
+                                            <button onClick={handleOnClick} className="text-Light text-lg font-semibold py-2 px-4 m-4 rounded-3xl bg-Categories hover:text-Categories hover:bg-Light">
+                                                Upload an Image
+                                            </button>
+                                        );
+                                    }}
+                                </CldUploadWidget>
+                                <CldImage width={200} height={200} alt={workEdit.title} src={workEdit.coverImage} />
                                 <div className='flex justify-center content-center w-full h-16'><button type='submit' className='text-MyColor text-lg font-semibold h-12 py-2 px-4 m-6 rounded-3xl bg-Light hover:text-Light hover:bg-MyColor'>Modif Project</button></div>
                             </form>
                         </div>

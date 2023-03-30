@@ -85,20 +85,24 @@ export default function WorksCreate({ work }: Props){
                                 <input className="rounded-lg border-2 border-DarkMode bg-Categories w-full h-9" type="text" id='slug' onChange={handleChange}/><br />
                     
                                 <label htmlFor="" className='font-semibold'>Image :</label><br />
-                                <CldUploadWidget uploadPreset="next-cloudinary-unsigned">
+                                <CldUploadWidget  uploadPreset={process.env.NEXT_PUBLIC_CLOUDINARY_UPLOAD_PRESET}
+                                     onUpload={(res: { info: { secure_url: any; }; }) => {
+                                         console.log('res : ',res.info)
+                                         setWorksCreate((prev) =>
+                                             ({ ...prev, coverImage: res.info.public_id })) }
+                                }>
                                     {({ open }) => {
-                                        function handleOnClick(e) {
-                                        e.preventDefault();
-                                        open();
+                                        function handleOnClick(e: { preventDefault: () => void; }) {
+                                            e.preventDefault();
+                                            open();
                                         }
                                         return (
-                                        <button onClick={handleOnClick} className="text-Light text-lg font-semibold py-2 px-4 m-4 rounded-3xl bg-Categories hover:text-Categories hover:bg-Light">
-                                            Upload an Image
-                                        </button>
+                                            <button onClick={handleOnClick} className="text-Light text-lg font-semibold py-2 px-4 m-4 rounded-3xl bg-Categories hover:text-Categories hover:bg-Light">
+                                                Upload an Image
+                                            </button>
                                         );
                                     }}
                                 </CldUploadWidget>
-                                <input className="rounded-lg border-2 border-DarkMode bg-Categories w-full h-9" type="text" id='coverImage' onChange={handleChange}/><br />
                                 <div className='flex justify-center content-center w-full h-16'><button type='submit' className='text-MyColor text-lg font-semibold h-12 py-2 px-4 m-6 rounded-3xl bg-Light hover:text-Light hover:bg-MyColor'>New Project</button></div>
                             </form>
                         </div>

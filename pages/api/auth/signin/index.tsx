@@ -7,14 +7,14 @@ export default async (req, res) => {
   if (session) {
     return {
       redirect: {
-        destination: '/admin/works', // some destination '/dashboard' Ex,
+        destination: '/admin', // some destination '/dashboard' Ex,
         permanent: false,
       },
     }
   } else {
     return {
       redirect: {
-        destination: '/404', // some destination '/dashboard' Ex,
+        destination: '/', // some destination '/dashboard' Ex,
         permanent: false,
       },
     }

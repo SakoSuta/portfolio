@@ -73,7 +73,10 @@ export default function Home() {
                             <p className='py-9'>Hello, my name is Emilie, I am 19 years old and I am student in web and mobile development. I am motivated dedicated to learn and ready to put my knowledge and my skills at the service of your business</p>
                             <Reseaux/>
                         </div>
-                        <div className='w-2/6'><img src="/img/Back_Image.png" /></div>
+                        <div className='w-2/6'>
+                            <img src="/img/Back_Image.png" />
+                            {/* <img src="/img/Me.png" alt="My picture" /> */}
+                        </div>
                     </section>
                     <section className='flex items-center justify-between h-full' id='portfolio'>
                         <div className='w-full'>
