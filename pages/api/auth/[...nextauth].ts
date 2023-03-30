@@ -14,7 +14,7 @@ export const authOptions: NextAuthOptions = {
             /* CONFIGURATION DU FORMULAIRE INTÉGRÉ PAR LE PLUGIN */
             credentials: {
                 username: { label: 'Nom', type: 'text', placeholder: 'admin' },
-                password: { label: 'Mot de passe', type: 'password' },
+                password: { label: 'Mot de passe', type: 'password' , placeholder: 'admin' },
             },
             authorize(credentials, req) {
                 try {

@@ -5,8 +5,10 @@ import { NextPage } from "next"
 import Link from "next/link"
 import { useEffect, useState } from 'react'
 
-import { getSession } from 'next-auth';
-import { useRouter } from 'next/router';
+// import { signOut } from 'next-auth/react'
+
+// import { getSession } from 'next-auth';
+// import { useRouter } from 'next/router';
 
 
 
@@ -40,48 +42,51 @@ export default function Works({ work }: Props){
     if(works){
         return (
             <>
-                <header>
-                    <h1>Admin - All my Projects</h1>
-                    <br />
-                </header>
-
-                <Link href="/admin/works/create">Create</Link>
-
-                {message && <p>{message}</p>}
-
-                <section className="w-full px-[5vw] pb-[5vw]">
-                    <div className="w-full box-border grid grid-cols-3 gap-[20px]">
-                        {works.map((work) => (
-                            <div className="card" key={work._id}>
-                                <Link href={`/admin/works/${work._id}`}>
-                                    <div className="w-full p-5 text-white bg-black/50">
-                                        <h2 className="font-semibold text-lg mb-2.5">Title : {work.title}</h2>
-                                        <p className="text-sm">Title of the SEO : {work.seo.title}</p>
-                                        <p className="text-sm">Description of the SEO : {work.seo.description}</p>
-                                        <p className="text-sm">Description : {work.description}</p>
-                                        <p className="text-sm">Image : {work.coverImage}</p>
+                <div className='bg-DarkMode text-Light px-16'>
+                    <header>
+                        <h1 className='text-4xl text-center p-4'>Admin - All Projects</h1>
+                        <div className='w-full flex justify-center'>
+                            <Link href="/api/auth/signout/credentials" className='text-Light text-lg py-2 px-4 my-4 font-semibold rounded-3xl bg-Red hover:text-Red hover:bg-Light'>Sign Out</Link>
+                        </div>
+                    </header>
+                    <Link href="/admin/works/create" className='text-MyColor text-lg font-semibold py-2 px-4 m-16 rounded-3xl bg-Light hover:text-Light hover:bg-MyColor'>Create a new Project</Link>
+                    {message && <div className='flex justify-center w-full p-9'><p className='text-lg font-semibold'>{message}</p></div>}
+                    <section className='bg-DarkMode'>
+                        <div className='grid grid-cols-1 xs:grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-4 grid-flow-row'>
+                            {works.map((work) => (
+                                <div key={work._id} className='w-96 p-6 m-9 bg-BackD rounded-md'>
+                                    <Link href={`/admin/works/${work._id}`}>
+                                        <div>
+                                            <h2 className='text-center'>{work.title}</h2>
+                                            <div>
+                                                <p>Title of the SEO : {work.seo.title}</p>
+                                                <p>Description of the SEO : {work.seo.description}</p>
+                                                <p>Description : {work.description}</p>
+                                                <p>Image : {work.coverImage}</p>
+                                            </div>
+                                        </div>
+                                    </Link>
+                                    <div className='flex justify-center content-center h-fit'>
+                                        <Link href={`/admin/works/update/${work._id}`} className="text-Light text-lg font-semibold py-2 px-4 m-4 rounded-3xl bg-MyColor hover:text-MyColor hover:bg-Light">Modif</Link>
+                                        <button onClick={() => deleteWork(work._id)} className="text-Light text-lg py-2 px-4 m-4 font-semibold rounded-3xl bg-Red hover:text-Red hover:bg-Light">Delete</button>
                                     </div>
-                                </Link>
-                                <div>
-                                <Link href={`/admin/works/update/${work._id}`}>Modif</Link>
-                                <span> || </span>
-                                    <button onClick={() => deleteWork(work._id)}>Delete</button>
                                 </div>
-                            </div>
-                         ))}
-                    </div>
-                </section>
+                             ))}
+                        </div>
+                    </section>
+                    <div className='h-screen bg-DarkMode'></div>
+                </div>
             </>
         )
     }
 }
 
-export async function getServerSideProps() {
-    const session = await getSession();
+// export async function getServerSideProps() {
+//     const session = await getSession();
   
-    return {
-      props: {
-        user: session?.user || null,
-      },
-    };
-  }
+//     return {
+//       props: {
+//         user: session?.user || null,
+//       },
+//     };
+//   }

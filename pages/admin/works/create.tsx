@@ -58,55 +58,53 @@ export default function WorksCreate({ work }: Props){
     if(workCreate){
         return (
             <>
-                <header>
-                    <h1>Admin - Creations</h1>
-                    <br />
-                </header>
-
-                <Link href="/admin">Get Back</Link>
-
-                {message && <p>{message}</p>}
-
-                <section className="w-full px-[5vw] pb-[5vw]">
-                    <div className="w-full box-border grid grid-cols-3 gap-[20px]">
-                        <form action="/admin" onSubmit={handleSubmit}>
-                            <label htmlFor="">Title :</label><br />
-                            <input type="text" id='title' onChange={handleChange}/><br />
-
-                            <label htmlFor="">SEO :</label><br />
-
-                                <label htmlFor="">Title of the SEO :</label><br />
-                                <input type="text" id='seo.title' onChange={handleChange}/><br />
-
-                                <label htmlFor="">Description of the SEO :</label><br />
-                                <input type="text" id='seo.description' onChange={handleChange}/><br />
-                            
-                            <label htmlFor="">Description :</label><br />
-                            <input type="text" id='description' onChange={handleChange}/><br />
-
-                            <label htmlFor="">Slug :</label><br />
-                            <input type="text" id='slug' onChange={handleChange}/><br />
-                            
-                            <label htmlFor="">Image :</label><br />
-                            <CldUploadWidget uploadPreset="next-cloudinary-unsigned">
-                                {({ open }) => {
-                                    function handleOnClick(e) {
-                                    e.preventDefault();
-                                    open();
-                                    }
-                                    return (
-                                    <button onClick={handleOnClick}>
-                                        Upload an Image
-                                    </button>
-                                    );
-                                }}
-                            </CldUploadWidget>
-                            <input type="text" id='coverImage' onChange={handleChange}/><br />
-
-                            <button type='submit'>New Project</button>
-                        </form>
-                    </div>
-                </section>
+                <div className='h-screen bg-DarkMode text-Light'>
+                    <header>
+                        <h1 className='text-4xl text-center p-4'>Admin - Creations</h1>
+                        <div className='w-full flex justify-center'>
+                            <Link href="/admin" className="text-Light text-lg font-semibold py-2 px-4 m-4 rounded-3xl bg-MyColor hover:text-MyColor hover:bg-Light">Get Back</Link>
+                        </div>
+                    </header>
+                    {message && <div className='flex justify-center w-full p-9'><p className='text-lg font-semibold'>{message}</p></div>}
+                    <section className='flex justify-center'>
+                        <div className='w-11/4 p-6 bg-BackD rounded-md'>
+                            <form action="/admin" onSubmit={handleSubmit}>
+                                <label htmlFor="" className='font-semibold'>Title :</label><br />
+                                <input className="rounded-lg border-2 border-DarkMode bg-Categories w-full h-9" type="text" id='title' onChange={handleChange}/><br />
+                                <label htmlFor="" className='font-semibold'>SEO :</label><br />
+                                    <div className='ml-4'>
+                                        <label htmlFor="" className='font-semibold'>Title of the SEO :</label><br />
+                                        <input className="rounded-lg border-2 border-DarkMode bg-Categories w-full h-9" type="text" id='seo.title' onChange={handleChange}/><br />
+                                        <label htmlFor="" className='font-semibold'>Description of the SEO :</label><br />
+                                        <input className="rounded-lg border-2 border-DarkMode bg-Categories w-full h-9" type="text" id='seo.description' onChange={handleChange}/><br />
+                                    </div>
+                    
+                                <label htmlFor="" className='font-semibold'>Description :</label><br />
+                                <input className="rounded-lg border-2 border-DarkMode bg-Categories w-full h-9" type="text" id='description' onChange={handleChange}/><br />
+                                <label htmlFor="" className='font-semibold'>Slug :</label><br />
+                                <input className="rounded-lg border-2 border-DarkMode bg-Categories w-full h-9" type="text" id='slug' onChange={handleChange}/><br />
+                    
+                                <label htmlFor="" className='font-semibold'>Image :</label><br />
+                                <CldUploadWidget uploadPreset="next-cloudinary-unsigned">
+                                    {({ open }) => {
+                                        function handleOnClick(e) {
+                                        e.preventDefault();
+                                        open();
+                                        }
+                                        return (
+                                        <button onClick={handleOnClick} className="text-Light text-lg font-semibold py-2 px-4 m-4 rounded-3xl bg-Categories hover:text-Categories hover:bg-Light">
+                                            Upload an Image
+                                        </button>
+                                        );
+                                    }}
+                                </CldUploadWidget>
+                                <input className="rounded-lg border-2 border-DarkMode bg-Categories w-full h-9" type="text" id='coverImage' onChange={handleChange}/><br />
+                                <div className='flex justify-center content-center w-full h-16'><button type='submit' className='text-MyColor text-lg font-semibold h-12 py-2 px-4 m-6 rounded-3xl bg-Light hover:text-Light hover:bg-MyColor'>New Project</button></div>
+                            </form>
+                        </div>
+                    </section>
+                </div>
+                <div className='h-screen bg-DarkMode'></div>
             </>
         )
     }

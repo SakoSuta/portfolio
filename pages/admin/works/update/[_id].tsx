@@ -88,46 +88,44 @@ export default function WorksUptade({ work }: Props){
     if(workEdit){
         return (
             <>
-                <header>
-                    <h1>Admin - Modifications Project</h1>
-                    <br />
-                </header>
-
-                <Link href="/admin">Get Back</Link>
-
-                {message && <p>{message}</p>}
-
-                <section className="w-full px-[5vw] pb-[5vw]">
-                    <div className="w-full box-border grid grid-cols-3 gap-[20px]">
-                            <div className="card">
-                                <form action="/admin" onSubmit={handleSubmit}>
-                                    <label htmlFor="">Title :</label><br />
-                                    <input type="text" id='title' value={workEdit.title} onChange={handleChange}/><br /><br />
-
-                                    <label htmlFor="">SEO :</label><br />
-                                        <label htmlFor="">Title of the SEO :</label><br />
-                                        <input type="text" id='seo.title' value={workEdit.seo.title} onChange={handleChange}/><br /><br />
-
-                                        <label htmlFor="">Description of the SEO :</label><br />
-                                        <input type="text" id='seo.description' value={workEdit.seo.description} onChange={handleChange}/><br /><br />
-                                    
-                                    <label htmlFor="">Description :</label><br />
-                                    <input type="text" id='description' value={workEdit.description} onChange={handleChange}/><br /><br />
-                                    
-                                    <label htmlFor="">Image :</label><br />
-                                    <CldImage
-                                    width="600"
-                                    height="600"
-                                    src={workEdit.coverImage}
-                                    alt="Description of my image"
-                                    />
-                                    <input type="text" id='coverImage' value={workEdit.coverImage} onChange={handleChange}/><br /><br />
-
-                                    <button type='submit'>Modif Project</button>
-                                </form>
-                            </div>
-                    </div>
-                </section>
+                <div className='h-screen bg-DarkMode text-Light'>
+                    <header>
+                        <h1 className='text-4xl text-center p-4'>Admin - Modifications Project</h1>
+                        <div className='w-full flex justify-center'>
+                            <Link href="/admin" className="text-Light text-lg font-semibold py-2 px-4 m-4 rounded-3xl bg-MyColor hover:text-MyColor hover:bg-Light">Get Back</Link>
+                        </div>
+                    </header>
+                    {message && <div className='flex justify-center w-full p-9'><p className='text-lg font-semibold'>{message}</p></div>}
+                    <section className='flex justify-center'>
+                        <div className='w-11/4 p-6 bg-BackD rounded-md'>
+                            <form action="/admin" onSubmit={handleSubmit}>
+                                <label htmlFor="" className='font-semibold'>Title :</label><br />
+                                <input className="rounded-lg border-2 border-DarkMode bg-Categories w-full h-9" type="text" id='title' value={workEdit.title} onChange={handleChange}/><br /><br />
+                                <label htmlFor="" className='font-semibold'>SEO :</label><br />
+                                    <div className='ml-4'>
+                                        <label htmlFor="" className='font-semibold'>Title of the SEO :</label><br />
+                                        <input className="rounded-lg border-2 border-DarkMode bg-Categories w-full h-9" type="text" id='seo.title' value={workEdit.seo.title} onChange={handleChange}/><br /><br />
+                                        <label htmlFor="" className='font-semibold'>Description of the SEO :</label><br />
+                                        <input className="rounded-lg border-2 border-DarkMode bg-Categories w-full h-9" type="text" id='seo.description' value={workEdit.seo.description} onChange={handleChange}/><br /><br />
+                                    </div>
+            
+                                <label htmlFor="" className='font-semibold'>Description :</label><br />
+                                <input className="rounded-lg border-2 border-DarkMode bg-Categories w-full h-9" type="text" id='description' value={workEdit.description} onChange={handleChange}/><br /><br />
+            
+                                <label htmlFor="" className='font-semibold'>Image :</label><br />
+                                <CldImage
+                                width="600"
+                                height="600"
+                                src={workEdit.coverImage}
+                                alt="Description of my image"
+                                />
+                                <input className="rounded-lg border-2 border-DarkMode bg-Categories w-full h-9" type="text" id='coverImage' value={workEdit.coverImage} onChange={handleChange}/><br /><br />
+                                <div className='flex justify-center content-center w-full h-16'><button type='submit' className='text-MyColor text-lg font-semibold h-12 py-2 px-4 m-6 rounded-3xl bg-Light hover:text-Light hover:bg-MyColor'>Modif Project</button></div>
+                            </form>
+                        </div>
+                    </section>
+                </div>
+                <div className='h-screen bg-DarkMode'></div>
             </>
         )
     }
