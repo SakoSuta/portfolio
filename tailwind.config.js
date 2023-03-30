@@ -14,6 +14,9 @@ module.exports = {
         'Light':'#E2E2E2',
         'Red':'#CC2828',
       },
+      fontFamily: {
+        sans: ['Inter', 'sans-serif'],
+      },
   },
   plugins: [],
 }

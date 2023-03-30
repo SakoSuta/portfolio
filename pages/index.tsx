@@ -50,9 +50,9 @@ import { Inter } from '@next/font/google'
 import Link from "next/link"
 import NextAuth from './api/auth/[...nextauth]';
 
-const interRegular = Inter({ 
-    weight: ['400'],
-    subsets: ['latin'] })
+// const interRegular = Inter({ 
+//     weight: ['400'],
+//     subsets: ['latin'] })
 
 export default function Home() {
     return (
