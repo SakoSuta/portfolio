@@ -1,4 +1,4 @@
-
+import Link from "next/link"
 // import ContactForm from "../components/contact-component";
 
 export default function Contact() {
@@ -8,10 +8,10 @@ export default function Contact() {
                 <header>
                     <nav>
                         <ul>
-                            <li><a href="/">Home</a></li>
-                            <li><a href="/services">Services</a></li>
-                            <li><a href="/portfolios">Portfolios</a></li>
-                            <li><a href="/experience">Experiences</a></li>
+                            <li><Link href="/">Home</Link></li>
+                            <li><Link href="/services">Services</Link></li>
+                            <li><Link href="/portfolios">Portfolios</Link></li>
+                            <li><Link href="/experience">Experiences</Link></li>
                         </ul>
                     </nav>
                 </header>
