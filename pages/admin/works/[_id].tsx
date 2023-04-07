@@ -62,8 +62,8 @@ export default function Works({ work }: Props){
         })
     };
 
-    const handleChange = (e: React.ChangeEvent<HTMLh2Element | HTMLTextAreaElement>) => {
-        const { id, value } = e.target;
+    const handleChange = (e: React.ChangeEvent<HTMLElement | HTMLTextAreaElement>) => {
+        const { id, value } = e.target as HTMLInputElement | HTMLTextAreaElement;
         setWorks((prev) => ({
           ...prev,
           title: id === 'title' ? value : prev.title,
