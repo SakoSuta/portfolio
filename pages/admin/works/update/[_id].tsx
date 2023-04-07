@@ -3,7 +3,7 @@ import { IWork } from '@/@types/mongodb-types'
 import { NextPage } from "next"
 // import useSWR, {Fetcher} from 'swr'
 import Link from "next/link"
-import { useEffect, useState } from 'react'
+import { useCallback,useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
 import { CldImage } from 'next-cloudinary';
 import { CldUploadWidget } from 'next-cloudinary';
@@ -26,23 +26,22 @@ export default function WorksUptade({ work }: Props){
         description: "",
     });
     
-    const getWork = () => {
+    const getWork = useCallback(() => {
         fetch(`/api/works/${_id}`, { method: "GET"})
-        .then(response => response.json())
-        .then((json) => {
-            
+          .then(response => response.json())
+          .then((json) => {
             setWorksUptade(json.works)
-        })
-        .catch((error) => {
-            console.log(error);  
-        })
-    } 
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+      }, [_id]);
 
     useEffect(() => {
         if(_id){
             getWork()
         }
-    }, [_id])
+    }, [_id, getWork])
     
     const updateWork = async () => {
         fetch(`/api/works/${_id}`, {
