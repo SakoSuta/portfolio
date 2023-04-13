@@ -8,6 +8,7 @@ module.exports = {
       extend: {},
       colors: {
         'MyColor': '#E69F34',
+        'TransColor': '#FFEBCC',
         'Categories': '#656D72',
         'DarkMode': '#1D2939',
         'BackD':'#353E4B',
