@@ -41,7 +41,8 @@
 
 import Head from 'next/head'
 
-import { Navigation, Footer } from "./components/Nav";
+import Navigation from "./components/Nav";
+import Footer from './components/foot';
 import ContactForm from "./components/contact-component";
 import Reseaux from './components/Reseaux';
 import { Project } from "./components/project";

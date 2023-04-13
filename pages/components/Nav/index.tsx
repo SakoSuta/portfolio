@@ -2,7 +2,7 @@ import Reseaux from "../Reseaux";
 import Link from "next/link"
 import Image from "next/image"
 
-function Navigation() {
+export default function Navigation() {
     return (
         <>
             <nav className="flex justify-between items-center px-1 py-4">
@@ -23,18 +23,3 @@ function Navigation() {
         </>
     )
 }
-
-function Footer() {
-    return (
-        <>
-            <header>
-                <footer className="flex flex-col items-center py-20">
-                    <Reseaux/>
-                    <p className="mt-6">© 2022  -  Emilie Montpre alias SakoSuta</p>
-                </footer>
-            </header>
-        </>
-    )
-}
-
-export { Navigation, Footer}
