@@ -7,6 +7,7 @@ import { useCallback,useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
 import { CldImage } from 'next-cloudinary';
 import { CldUploadWidget } from 'next-cloudinary';
+import Works from '../../../admin'
 
 type Props = {
     work: IWork[];
@@ -143,4 +144,4 @@ const WorksUptade: NextPage<Props> = ({ work }) => {
     return <h3>Work not found</h3>
 }
 
-export default WorksUptade;
+export default Works;
