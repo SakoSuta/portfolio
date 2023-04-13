@@ -89,7 +89,7 @@ export default function WorksCreate({ work }: Props){
                                      onUpload={(res: { info: { secure_url: any; }; }) => {
                                          console.log('res : ',res.info)
                                          setWorksCreate((prev) =>
-                                             ({ ...prev, coverImage: res.info.public_id })) }
+                                             ({ ...prev, coverImage: res.info.secure_url })) }
                                 }>
                                     {({ open }) => {
                                         function handleOnClick(e: { preventDefault: () => void; }) {

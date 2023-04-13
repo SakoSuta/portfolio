@@ -56,7 +56,7 @@ export default function Works({ work }: Props){
                             {works.map((work) => (
                                 <div key={work._id} className='w-96 p-6 m-9 bg-BackD rounded-md'>
                                     <Link href={`/admin/works/${work._id}`}>
-                                        <div>
+                                        <div className='w-max'>
                                             <h2 className='text-center'>{work.title}</h2>
                                             <div>
                                                 <p>Title of the SEO : {work.seo.title}</p>

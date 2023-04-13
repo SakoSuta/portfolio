@@ -8,8 +8,6 @@ import { useRouter } from 'next/router'
 import { CldImage } from 'next-cloudinary';
 import { CldUploadWidget } from 'next-cloudinary';
 
-
-
 type Props = {
     work: IWork[];
 }
@@ -117,7 +115,7 @@ export default function WorksUptade({ work }: Props){
                                      onUpload={(res: { info: { secure_url: any; }; }) => {
                                          console.log('res : ',res.info)
                                          setWorksUptade((prev) =>
-                                             ({ ...prev, coverImage: res.info.public_id })) }
+                                             ({ ...prev, coverImage: res.info.secure_url })) }
                                 }>
                                     {({ open }) => {
                                         function handleOnClick(e: { preventDefault: () => void; }) {
