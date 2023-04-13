@@ -12,7 +12,7 @@ type Props = {
     work: IWork[];
 }
 
-export default function WorksUptade({ work }: Props){
+const WorksUptade: NextPage<Props> = ({ work }) => {
     const [ message, setMessage ] = useState("");
     const router = useRouter()
     const { _id } = router.query
@@ -139,4 +139,6 @@ export default function WorksUptade({ work }: Props){
             </>
         )
     }
+
+    return <h3>Work not found</h3>
 }

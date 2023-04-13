@@ -6,6 +6,7 @@ import Link from "next/link"
 import { useCallback,useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
 import { CldImage } from 'next-cloudinary';
+import Works from '..'
 
 
 
@@ -13,7 +14,7 @@ type Props = {
     work: IWork[];
 }
 
-export default function Works({ work }: Props){
+const Work: NextPage<Props> = ({ work }) => {
     const [ message, setMessage ] = useState("");
     const router = useRouter()
     const { _id } = router.query
@@ -121,4 +122,7 @@ export default function Works({ work }: Props){
             </>
         )
     }
+    return <h3>No works</h3>
 }
+
+export default Works;
