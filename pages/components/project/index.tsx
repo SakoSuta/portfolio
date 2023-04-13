@@ -7,7 +7,7 @@ type Props = {
     work: IWork[];
 }
 
-function Project(){
+export default function Project(){
     const [ message, setMessage ] = useState("");
     const [ works, setWorks ] = useState<IWork[] | null>(null);
     
