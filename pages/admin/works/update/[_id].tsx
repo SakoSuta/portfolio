@@ -142,3 +142,5 @@ const WorksUptade: NextPage<Props> = ({ work }) => {
 
     return <h3>Work not found</h3>
 }
+
+export default WorksUptade;
