@@ -12,7 +12,7 @@ export default function Navigation() {
                     <li className="flex items-center"><Link href="#portfolio">Portfolios</Link></li>
                     <li className="flex items-center"><Link href="">Experiences</Link></li>
                     <li className="flex items-center"><Link href="">Skills</Link></li>
-                    <li className="flex items-center"><Link href="/api/auth/signin/credentials">Admin</Link></li>
+                    <li className="flex items-center"><Link href="/admin">Admin</Link></li>
                 </ul>
                 <div className="flex justify-between items-center">
                     <Link href="/"><Image width={30} height={30} alt="Icon for darkMode" src="/moon.svg" /></Link>
