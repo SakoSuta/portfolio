@@ -32,7 +32,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
 
             return res.status(200).json({ works, message: 'Voici le projet demander' })
 
-        } catch (error) {
+        } catch (error : any) {
 
             console.log(error)
             var message = `Une erreur c'est produite`
@@ -84,7 +84,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
             return res.status(201).json({ message: `La Modification de ${foundWork.title} à bien été effectuer`})
 
 
-        } catch(error){
+        } catch(error : any){
             console.log(error)
             var message = `Une erreur c'est produite`
             var code = 500
@@ -137,7 +137,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
             const works = await Work.find({})
 
             return res.status(200).json({ works:works, message: `La Suppression de ${foundWork.title} à bien été effectuer` })
-        } catch (error) {
+        } catch (error : any) {
             console.log(error)
             var message = `Une erreur c'est produite`
             var code = 500

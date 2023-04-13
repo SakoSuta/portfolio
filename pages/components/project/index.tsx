@@ -7,7 +7,7 @@ type Props = {
     work: IWork[];
 }
 
-function Project({ work }: Props){
+function Project(){
     const [ message, setMessage ] = useState("");
     const [ works, setWorks ] = useState<IWork[] | null>(null);
     
@@ -19,11 +19,11 @@ function Project({ work }: Props){
         })
     }, [])
     
-    if(works){
+
         return (
             <>
                 {message && <div className='flex justify-center w-full p-9'><p className='text-lg font-semibold'>{message}</p></div>}
-                {works.map((work) => (
+                {works?.map((work) => (
                     <div key={work._id} className='w-96 p-6 m-9 rounded-md'>
                         <Link href="">
                             <div className='w-fit py-6'>
@@ -35,7 +35,7 @@ function Project({ work }: Props){
                 ))}
             </>
         )
-    }
+    
 }
 
 export { Project }

@@ -2,8 +2,6 @@ import type { NextApiRequest, NextApiResponse } from 'next'
 import { dbConnect } from '@/@utils/mongodb/db-connect'
 import Work from '@/model/Work'
 import { IWork } from '@/@types/mongodb-types'
-import { v2 as cloudinary } from "cloudinary";
-const { CLOUDINARY_API_SECRET } = process.env
 
 type Data = {
     works?: IWork[]
@@ -15,7 +13,6 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
     if (req.method === 'POST') {
 
         const { title, seo, slug, description, coverImage } = req.body
-        const Image = cloudinary.utils.api_sign_request(coverImage, CLOUDINARY_API_SECRET);
 
         try{
 
@@ -37,7 +34,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
             }
 
             return res.status(201).json({ message: `La Création de ${workCreate.title} à bien était effectuer`})
-        } catch(error){
+        } catch(error : any){
             console.log(error)
             var message = `Une erreur c'est produite`
             var code = 500
@@ -71,7 +68,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
             }
 
             return res.status(200).json({ works, message: 'Voici tous les projets disponibles' })
-        } catch (error) {
+        } catch (error : any) {
             console.log(error)
             var message = `Une erreur c'est produite`
             var code = 500
