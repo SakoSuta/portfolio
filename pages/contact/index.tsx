@@ -1,5 +1,4 @@
 import Navigation from "../components/Nav";
-import ContactForm from "./contact-component";
 import Image from 'next/image'
 
 import React, { useState } from "react";
